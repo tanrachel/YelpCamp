@@ -1,0 +1,12 @@
+.card-img-top{
+	height:30vh;
+	object-fit:cover;
+}
+
+#delete-form{
+	display:inline;
+}
+
+label {
+	color: #999
+}
