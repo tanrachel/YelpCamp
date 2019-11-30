@@ -21,56 +21,56 @@ var data = [
 ]
 
 function seedDB(){
+	// Campground.remove({},function(err){
+	// 	if(err){
+	// 		console.log(err)
+	// 	}else{
+	// 		console.log("removed all campgrounds");
+	// 		Comment.remove({},function(err){
+	// 			if(err){
+	// 				console.log(err)
+	// 			}else{
+	// 				console.log("comments cleaned up")
+	// 			}
+	// 		})
+	// 	}
+	// })
+	// Remove Campgrounds
 	Campground.remove({},function(err){
 		if(err){
 			console.log(err)
 		}else{
-			console.log("removed all campgrounds");
-			Comment.remove({},function(err){
+			console.log("Removed All Campground")
+// 			Remove Campgrounds
+			data.forEach(function(seed){
+			Campground.create(seed,function(err,campground){
 				if(err){
 					console.log(err)
 				}else{
-					console.log("comments cleaned up")
-				}
+					console.log("added a campground");
+					Comment.remove({},function(err){
+						if(err){
+							console.log(err)
+						}else{
+							console.log("removed all comments")
+						}
+					})
+// 					Create Comment
+					// Comment.create(
+					// 	{ text: "This place is greate, but I wish there was internet :D",
+					// 	 author "Homer" },function(err,comment){
+					// 		 if(err){
+					// 			 console.log(err)
+					// 		 }else{
+					// 		 campground.comments.push(comment);
+					// 		 campground.save();
+					// 		 console.log("Created new Comments")}
+					// 	 })
+					}
+				})
 			})
-		}
-	})
-// 	Remove Campgrounds
-// 	Campground.remove({},function(err){
-// 		if(err){
-// 			console.log(err)
-// 		}else{
-// 			console.log("Removed All Campground")
-// // 			Remove Campgrounds
-// 			data.forEach(function(seed){
-// 			Campground.create(seed,function(err,campground){
-// 				if(err){
-// 					console.log(err)
-// 				}else{
-// 					console.log("added a campground");
-// 					Comment.remove({},function(err){
-// 						if(err){
-// 							console.log(err)
-// 						}else{
-// 							console.log("removed all comments")
-// 						}
-// 					})
-// // 					Create Comment
-// 					// Comment.create(
-// 					// 	{ text: "This place is greate, but I wish there was internet :D",
-// 					// 	 author "Homer" },function(err,comment){
-// 					// 		 if(err){
-// 					// 			 console.log(err)
-// 					// 		 }else{
-// 					// 		 campground.comments.push(comment);
-// 					// 		 campground.save();
-// 					// 		 console.log("Created new Comments")}
-// 					// 	 })
-// 					}
-// 				})
-// 			})
 
-// 		};
-// 	}); 
+		};
+	}); 
 }
 module.exports= seedDB; 
